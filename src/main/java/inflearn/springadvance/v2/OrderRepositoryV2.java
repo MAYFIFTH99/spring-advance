@@ -1,7 +1,7 @@
 package inflearn.springadvance.v2;
 
-import inflearn.springadvance.hellotrace.HelloTraceV1;
 import inflearn.springadvance.hellotrace.HelloTraceV2;
+import inflearn.springadvance.trace.TraceId;
 import inflearn.springadvance.trace.TraceStatus;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -14,11 +14,11 @@ public class OrderRepositoryV2 {
 
     private final HelloTraceV2 trace;
 
-    public void save(String itemId) {
+    public void save(TraceId traceId, String itemId) {
 
         TraceStatus status = null;
         try {
-            status = trace.begin(this.getClass().getName() + " " + "request()");
+            status = trace.beginSync(traceId, this.getClass().getName() + " " + "request()");
 
             //save logic
             if (itemId.equals("ex")) {
