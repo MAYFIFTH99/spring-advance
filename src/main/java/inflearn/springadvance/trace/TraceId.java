@@ -27,12 +27,12 @@ public class TraceId {
      * 87b63be1 [log1]
      * 87b63be1 |------> [log2]
      */
-    public TraceId createNextId() {
+    public TraceId createNextLevel() {
         return new TraceId(id, level + 1);
     }
 
     // 하위 레벨에서 return 되면 상위 레벨로 다시 복귀하는 과정
-    public TraceId createPreviousId(){
+    public TraceId createPreviousLevel(){
         return new TraceId(id, level -1);
     }
 
