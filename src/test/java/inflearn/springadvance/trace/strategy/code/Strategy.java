@@ -1,4 +1,4 @@
-package inflearn.springadvance.trace.strategy.code.strategy;
+package inflearn.springadvance.trace.strategy.code;
 
 @FunctionalInterface
 public interface Strategy {

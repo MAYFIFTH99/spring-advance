@@ -1,10 +1,10 @@
 package inflearn.springadvance.trace.strategy;
 
 
-import inflearn.springadvance.trace.strategy.code.strategy.ContextV1;
-import inflearn.springadvance.trace.strategy.code.strategy.Strategy;
-import inflearn.springadvance.trace.strategy.code.strategy.StrategyLogic1;
-import inflearn.springadvance.trace.strategy.code.strategy.StrategyLogic2;
+import inflearn.springadvance.trace.strategy.code.ContextV1;
+import inflearn.springadvance.trace.strategy.code.Strategy;
+import inflearn.springadvance.trace.strategy.code.StrategyLogic1;
+import inflearn.springadvance.trace.strategy.code.StrategyLogic2;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 
