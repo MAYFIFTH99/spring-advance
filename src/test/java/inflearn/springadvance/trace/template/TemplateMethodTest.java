@@ -1,5 +1,6 @@
 package inflearn.springadvance.trace.template;
 
+import inflearn.springadvance.trace.template.code.AbstractTemplate;
 import inflearn.springadvance.trace.template.code.SubClassLogic1;
 import inflearn.springadvance.trace.template.code.SubClassLogic2;
 import lombok.extern.slf4j.Slf4j;
@@ -48,5 +49,26 @@ public class TemplateMethodTest {
 
         SubClassLogic2 logic2 = new SubClassLogic2();
         logic2.execute();
+    }
+
+    @Test
+    void templateMethodV2() {
+        AbstractTemplate template1 = new AbstractTemplate() {
+            @Override
+            protected void call() {
+                log.info("비즈니스 로직1");
+            }
+        };
+
+        template1.execute();
+
+        AbstractTemplate template2 = new AbstractTemplate() {
+            @Override
+            protected void call() {
+                log.info("비즈니스로직2");
+            }
+        };
+
+        template2.execute();
     }
 }
