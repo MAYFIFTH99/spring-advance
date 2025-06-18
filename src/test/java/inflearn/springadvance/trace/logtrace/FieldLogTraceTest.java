@@ -1,6 +1,7 @@
 package inflearn.springadvance.trace.logtrace;
 
-import inflearn.springadvance.trace.TraceStatus;
+import inflearn.springadvance.templatecallback.trace.TraceStatus;
+import inflearn.springadvance.templatecallback.trace.logtrace.FieldLogTrace;
 import org.junit.jupiter.api.Test;
 
 class FieldLogTraceTest {

@@ -1,10 +1,7 @@
 package inflearn.springadvance.hellotrace;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-import inflearn.springadvance.trace.TraceId;
-import inflearn.springadvance.trace.TraceStatus;
-import net.bytebuddy.pool.TypePool.Resolution.Illegal;
+import inflearn.springadvance.templatecallback.hellotrace.HelloTraceV1;
+import inflearn.springadvance.templatecallback.trace.TraceStatus;
 import org.junit.jupiter.api.Test;
 
 class HelloTraceV1Test {

@@ -1,8 +1,7 @@
 package inflearn.springadvance.trace.logtrace;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-import inflearn.springadvance.trace.TraceStatus;
+import inflearn.springadvance.templatecallback.trace.TraceStatus;
+import inflearn.springadvance.templatecallback.trace.logtrace.ThreadLocalLogTrace;
 import org.junit.jupiter.api.Test;
 
 class ThreadLocalLogTraceTest {

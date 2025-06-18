@@ -1,6 +1,7 @@
 package inflearn.springadvance.hellotrace;
 
-import inflearn.springadvance.trace.TraceStatus;
+import inflearn.springadvance.templatecallback.hellotrace.HelloTraceV2;
+import inflearn.springadvance.templatecallback.trace.TraceStatus;
 import org.junit.jupiter.api.Test;
 
 class HelloTraceV2Test {
