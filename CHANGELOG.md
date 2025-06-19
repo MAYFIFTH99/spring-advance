@@ -83,3 +83,14 @@ LogTraceHandler -> LogTraceFilterHandler
 > JDK 동적 프록시 기술을 `인터페이스`기반이기 때문에 V1 처럼 Controller, Service 도 인터페이스를 구현받아 사용해야 하는 문제가 존재한다.
 > 
 ><br>구현 클래스를 대상으로 하는 동적 프록시 + 필터링 기능이 있으면 좋겠다.
+
+---
+
+CGLIB은
+- enhancer.setSuperclass()로 타겟 클래스를 정의하고,
+- enhancer.setCallback()로 프록시 객체(로직)을 정의한다.
+- 이후 enhancer.create()으로 target을 담은 Target Type 프록시 객체 생성
+
+proxy.call() 하면 이제 프록시 기능이 적용되는 것.
+
+> JDK 동적 프록시와 CGLIB의 가장 큰 차이점은 인터페이스 기반이 아니라, 클래스 기반으로 타겟 클래스를 상속 받은 객체를 생성해낸다는 점이다.
