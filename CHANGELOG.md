@@ -60,3 +60,9 @@
 > 정리하면, AImpl과 BImpl의 프록시 객체를 각각 생성하지 않고, 동적으로 만들어 공통으로 사용할 수 있게 되었다.
 ---
 
+### 실제 애플리케이션 로직에 적용
+#### `LogTraceHandler`
+
+- `InvocationHandler` 인터페이스를 구현해 JDK 동적 프록시에서 사용됨
+- private final Object target : 프록시 대상
+- String message : `LogTrace`에 사용할 메시지
