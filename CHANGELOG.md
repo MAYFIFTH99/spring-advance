@@ -40,3 +40,19 @@
 # JDK 동적 프록시
 
 - 동적 프록시 예제 세팅
+
+`TimeInvocationHadler`
+- TimeInvocationHandler는 InvocationHandelr를 구현
+- 이렇게 해야 JDK 동적 프록시에 적용할 공통 로직을 개발 가능
+- Object target : 동적 프록시가 호출할 대상
+- method.invoke(target, args) : 리플렉션을 사용해서 `target` 인스턴스의 메서드를 실행
+    - `args`는 메서드 호출시 넘겨줄 인수
+
+### TimeInvocationHandler 동적 프록시 동작 과정
+1. 클라이언트는 JDK 동적 프록시의 `call()` 을 실행
+2. JDK 동적 프록시는 `InvocationHandler.invoke()`를 호출 (동적 프록시가 call() 호출을 가로챔)
+   - `TimeInvocationHandler`가 구현체로 있기 때문에 `TimeInvocationHandler.invoke()`가 실제로 호출
+3. `TimeInvotaionHandler`가 내부 로직을 수행하고, `method.invoke(target, args)`를 호출해서 `target`인 실제 객체 `AImpl(BImpl)`를 호출
+4. AImpl(BImpl) 인스턴스의 `call()` 이 실행
+5. `call()`의 실행이 끝나면 `TimeInvocationHandler`로 응답이 돌아온다.
+   - 시간 로그를 출력하고 결과를 반환
