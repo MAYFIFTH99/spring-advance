@@ -86,7 +86,7 @@ LogTraceHandler -> LogTraceFilterHandler
 
 ---
 
-CGLIB은
+# CGLIB
 - enhancer.setSuperclass()로 타겟 클래스를 정의하고,
 - enhancer.setCallback()로 프록시 객체(로직)을 정의한다.
 - 이후 enhancer.create()으로 target을 담은 Target Type 프록시 객체 생성
@@ -94,3 +94,18 @@ CGLIB은
 proxy.call() 하면 이제 프록시 기능이 적용되는 것.
 
 > JDK 동적 프록시와 CGLIB의 가장 큰 차이점은 인터페이스 기반이 아니라, 클래스 기반으로 타겟 클래스를 상속 받은 객체를 생성해낸다는 점이다.
+
+---
+
+# CGLIB의 제약사항
+
+> **CGLIB 클래스 기반 프록시는 상속을 사용하기 때문에 몇 가지 제약이 있다.**
+
+1. 부모 클래스의 생성자를 체크해야 한다
+   - 자식 클래스를 동적으로 생성해야 하기 때문에 기본 생성자 필요
+   - 이에 따른 생성자 확인 필요
+2. 클래스에 `final` 키워드가 있으면 상속이 불가능 -> CGLIB에서 예외 발생
+3. 메서드에 `final` 키워드가 있으면 메서드 오버라이딩이 불가능 -> CGLIB 프록시 로직 동작 X
+
+> 이제 인터페이스 기반이 아닌 V2 버전(클래스 기반) 애플리케이션 로직에도 이를 적용할 수 있지만, 
+> <br>CGLIB의 단점을 보완하면서 동시에 편리하게 사용할 수 있는 `ProxyFactory`가 있으므로 생략한다.
