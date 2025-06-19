@@ -11,9 +11,8 @@ import inflearn.springadvance.proxy.config.v1_proxy.interface_proxy.OrderReposit
 import inflearn.springadvance.proxy.config.v1_proxy.interface_proxy.OrderServiceInterfaceProxy;
 import inflearn.springadvance.proxy.trace.logtrace.LogTrace;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 
-@Configuration
+//@Configuration
 public class InterfaceProxyConfig {
 
     @Bean
