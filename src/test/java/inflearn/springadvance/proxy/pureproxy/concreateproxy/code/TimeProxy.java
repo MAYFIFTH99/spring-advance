@@ -1,14 +1,14 @@
-package inflearn.springadvance.proxy.pureproxy.decorator.code;
+package inflearn.springadvance.proxy.pureproxy.concreateproxy.code;
 
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class TimeDecorator implements Component{
+public class TimeProxy extends ConcreteLogic {
 
-    private final Component component;
+    private ConcreteLogic target;
 
-    public TimeDecorator(Component component) {
-        this.component = component;
+    public TimeProxy(ConcreteLogic target) {
+        this.target = target;
     }
 
     @Override
@@ -17,7 +17,7 @@ public class TimeDecorator implements Component{
 
         long startTime = System.currentTimeMillis();
 
-        String result = component.operation();
+        String result = target.operation();
 
         long endTime = System.currentTimeMillis();
         long resultTime = endTime - startTime;
