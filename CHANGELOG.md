@@ -275,3 +275,13 @@ ProxyFactory, Advice 테스트
 - ProxyFactory에 `target` 클래스를 인자로 넘겨주고,
 - `factory.addAdvice(new TimeAdvice)` 로 `advice`를 추가해주면 프록시 팩토리가 동작한다.
 
+- 인터페이스 기반이 아닌 클래스 기반(ConcreteService)인 경우 동적 프록시로 CGLIB가 사용된다.
+
+<br>
+
+- AopUtils로 해당 프록시가 어떤 프록시인지 확인 가능!
+```java
+        assertThat(AopUtils.isAopProxy(proxy)).isTrue();
+        assertThat(AopUtils.isJdkDynamicProxy(proxy)).isFalse();
+        assertThat(AopUtils.isCglibProxy(proxy)).isTrue();
+```
