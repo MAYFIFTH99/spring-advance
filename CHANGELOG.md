@@ -193,4 +193,8 @@ proxy.call() 하면 이제 프록시 기능이 적용되는 것.
 ## 어드바이저(Adviser)
 - advisortest1() : 어드바이저 (Pointcut.TRUE)
 - advisortest2() : 포인트컷을 직접 만들어 적용
+- advisortest3() : 스프링이 제공하는 포인트컷 사용
+  - 스프링이 제공하는 포인트컷은 매~우 많다. 따라서 포인트컷을 직접 구현할 일은 별로 없음.
+
+
 
