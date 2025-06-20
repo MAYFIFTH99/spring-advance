@@ -267,3 +267,11 @@ proxy.call() 하면 이제 프록시 기능이 적용되는 것.
 > 프록시 팩토리를 사용하면 `Advice`를 호출하는 전용 `InvocationHandler`, `MethodInterceptor`를 내부에서 사용한다.
 
 추가로, 특정 메서드를 필터링해서 프록시 로직이 적용되도록 할 때 이전에는 직접 PattternsMatchUtils를 사용했지만, 스프링은 `Pointcut` 이라는 개념을 도입해 이를 일관성 있게 해결한다.
+
+---
+
+ProxyFactory, Advice 테스트
+
+- ProxyFactory에 `target` 클래스를 인자로 넘겨주고,
+- `factory.addAdvice(new TimeAdvice)` 로 `advice`를 추가해주면 프록시 팩토리가 동작한다.
+
