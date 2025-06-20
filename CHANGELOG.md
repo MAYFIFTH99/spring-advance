@@ -152,3 +152,8 @@ proxy.call() 하면 이제 프록시 기능이 적용되는 것.
         assertThat(AopUtils.isJdkDynamicProxy(proxy)).isFalse();
         assertThat(AopUtils.isCglibProxy(proxy)).isTrue();
 ```
+
+---
+
+`proxyFactory.setProxyTargetClass(true)`
+- 인터페이스가 있더라도, 타겟 클래스 기반(CGLIB)으로 프록시를 생성하는 옵션
