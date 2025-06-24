@@ -338,3 +338,9 @@ pointcut.setExpression("execution(* inflearn.springadvance.proxy.app..*(..)) && 
 ![img_5.png](img_5.png)
 
 ![img_6.png](img_6.png)
+
+---
+
+# @Aspect로 어드바이저 대체하기
+
+스프링은 `@Aspect` 어노테이션으로 매우 편리하게 포인트컷과 어드바이스로 구성되어 있는 어드바이저 생성 기능을 지원한다.
