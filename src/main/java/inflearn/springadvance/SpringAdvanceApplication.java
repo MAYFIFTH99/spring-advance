@@ -1,6 +1,6 @@
 package inflearn.springadvance;
 
-import inflearn.springadvance.proxy.config.v3_proxyfactory.ProxyFactoryConfigV2;
+import inflearn.springadvance.proxy.config.v4_postprocessor.BeanPostProcessorConfig;
 import inflearn.springadvance.proxy.trace.logtrace.LogTrace;
 import inflearn.springadvance.proxy.trace.logtrace.ThreadLocalLogTrace;
 import org.springframework.boot.SpringApplication;
@@ -16,7 +16,8 @@ import org.springframework.context.annotation.Import;
 //@Import(DynamicProxyConfig.class)
 //@Import(DynamicProxyFilterConfig.class)
 //@Import(ProxyFactoryConfigV1.class)
-@Import(ProxyFactoryConfigV2.class)
+//@Import(ProxyFactoryConfigV2.class)
+@Import(BeanPostProcessorConfig.class)
 @ComponentScan(basePackages = "inflearn.springadvance.proxy.app")
 public class SpringAdvanceApplication {
 
