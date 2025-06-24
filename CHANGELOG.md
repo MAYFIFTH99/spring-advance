@@ -260,3 +260,11 @@ proxy.call() 하면 이제 프록시 기능이 적용되는 것.
 ---
 
 beanA 를 생성
+
+`BeanPostProcessor` 인터페이스를 구현한 AtoBProcessor가 빈 후처리기다.
+A를 빈으로 등록할 때, B로 바꿔치기
+
+> `@PostConstruct`도 내부적으로 빈 후처리기를 사용한다.
+
+---
+
