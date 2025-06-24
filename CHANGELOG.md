@@ -319,3 +319,9 @@ A를 빈으로 등록할 때, B로 바꿔치기
 - 패키지를 기준으로 Pointcut 적용
 - no-log 메서드 호출 시에도 로그가 남는 문제 존재
 
+---
+
+**필터링 적용**
+```java
+pointcut.setExpression("execution(* inflearn.springadvance.proxy.app..*(..)) && !execution(* inflearn.springadvance.proxy.app..noLog(..))");
+```
