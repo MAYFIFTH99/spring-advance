@@ -290,3 +290,32 @@ A를 빈으로 등록할 때, B로 바꿔치기
 5. 프록시 생성 : 프록시 적용 대상인 경우, 프록시를 생성하고 반환해 프록시를 스프링 빈으로 등록
    - 만약 적용 대상이 아니라면 원본 객체를 반환
 6. 빈 등록 : 반환된 객체는 스프링 빈으로 등록
+
+
+---
+
+지금 포인트컷으로 request*, save* 로 설정해서 애플리케이션을 실행시켰을 때 의도하지 않은 객체도 프록시가 생성된다
+- requestMappingHandler ..
+
+## AspectJExpressionPointcut
+
+`AspectJExpressionPointcut`를 이용해 이를 세부적으로 컨트롤할 수 있다.
+
+> 실무에선 이걸 쓴다.
+
+```java
+    @Bean
+    public Advisor advisor2(LogTrace logTrace) {
+        //pointcut
+        AspectJExpressionPointcut pointcut = new AspectJExpressionPointcut();
+        pointcut.setExpression("execution(* inflearn.springadvance.proxy.app..*(..))");
+
+        //advice
+        LogTraceAdvice advice = new LogTraceAdvice(logTrace);
+        return new DefaultPointcutAdvisor(pointcut, advice);
+    }
+```
+
+- 패키지를 기준으로 Pointcut 적용
+- no-log 메서드 호출 시에도 로그가 남는 문제 존재
+
