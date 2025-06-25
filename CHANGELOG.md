@@ -416,3 +416,4 @@ pointcut.setExpression("execution(* inflearn.springadvance.proxy.app..*(..)) && 
 1. doLog()
 2. doTransaction()
 
+### Pointcut을 한 곳에서 관리, 외부에서 참조
