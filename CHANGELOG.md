@@ -429,3 +429,35 @@ pointcut.setExpression("execution(* inflearn.springadvance.proxy.app..*(..)) && 
 그 이유는 @Order는 @Aspect 단위로 적용되기 때문이다.
 
 따라서 메서드의 순서를 조작하고 싶다면 내부 클래스로 만들던가, 다른 클래스로 분리해서 적용해야 한다.
+
+---
+
+# Advice의 종류
+
+- `@Around` : 가장 강력하고, 포괄적인 어드바이스
+  - 메서드 호출 전후에 수행, 조인 포인트 실행 여부 선택, 반환 값 변환, 예외 변환 등 모두 가능
+- `@Before` : 조인 포인트 실행 이전에 실행
+- `@After Returning` : 조인 포인트가 정상 완료후 실행
+- `@After Throwing` : 메서드가 예외를 던지는 경우 실행
+- `@After` : 조인 포인트가 정상 또는 예외에 관계없이 실행(finally)
+
+코드로 보는게 이해가 빠르다.
+
+```java
+try {
+ //@Before
+ log.info("[around][트랜잭션 시작] {}", joinPoint.getSignature());
+ Object result = joinPoint.proceed();
+ //@AfterReturning
+ log.info("[around][트랜잭션 커밋] {}", joinPoint.getSignature());
+ return result;
+ } catch (Exception e) {
+ //@AfterThrowing
+ log.info("[around][트랜잭션 롤백] {}", joinPoint.getSignature());
+ throw e;
+ } finally {
+ //@After
+ log.info("[around][리소스 릴리즈] {}", joinPoint.getSignature());
+ }
+
+```

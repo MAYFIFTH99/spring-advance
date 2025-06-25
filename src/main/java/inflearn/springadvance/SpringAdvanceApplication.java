@@ -1,6 +1,6 @@
 package inflearn.springadvance;
 
-import inflearn.springadvance.aop.order.aop.AspectV5Order;
+import inflearn.springadvance.aop.order.aop.AspectV6Advice;
 import inflearn.springadvance.proxy.trace.logtrace.LogTrace;
 import inflearn.springadvance.proxy.trace.logtrace.ThreadLocalLogTrace;
 import org.springframework.boot.SpringApplication;
@@ -24,7 +24,8 @@ import org.springframework.context.annotation.Import;
 //@Import(AspectV2.class)
 //@Import(AspectV3.class)
 //@Import(AspectV4Pointcut.class)
-@Import({AspectV5Order.LogAspect.class, AspectV5Order.TransactionAspect.class})
+//@Import({AspectV5Order.LogAspect.class, AspectV5Order.TransactionAspect.class})
+@Import(AspectV6Advice.class)
 @ComponentScan(basePackages = "inflearn.springadvance.aop")
 public class SpringAdvanceApplication {
 

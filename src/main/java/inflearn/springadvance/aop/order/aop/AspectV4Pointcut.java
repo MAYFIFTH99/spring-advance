@@ -9,8 +9,6 @@ import org.aspectj.lang.annotation.Aspect;
 @Slf4j
 public class AspectV4Pointcut {
 
-
-
     @Around("inflearn.springadvance.aop.order.aop.pointcut.Pointcuts.allOrder()")
     public Object doLog(ProceedingJoinPoint joinPoint) throws Throwable {
 
