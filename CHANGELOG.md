@@ -464,3 +464,8 @@ try {
 ---
 
 # 다양한 Pointcut 지시자
+
+1. execution
+2. within : execution의 타입 매치 부분만 사용한다고 보면 된다.
+   - 주의 : execution 과 다르게, 타입이 정확히 매치되어야 한다.
+   - 인터페이스 사용 X
