@@ -409,3 +409,10 @@ pointcut.setExpression("execution(* inflearn.springadvance.proxy.app..*(..)) && 
 실무에서는 스프링이 제공하는 AOP 기능만 사용해도 대부분의 문제를 해결할 수 있으므로, 우선 스프링 AOP에 대해 먼저 학습하고,
 추가적인 문제 해결이 필요할 때 AspectJ 프로젝트를 참고하자.
 
+---
+
+두 개의 포인트컷 적용
+
+1. doLog()
+2. doTransaction()
+
