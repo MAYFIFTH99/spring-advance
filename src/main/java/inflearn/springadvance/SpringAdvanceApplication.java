@@ -1,11 +1,13 @@
 package inflearn.springadvance;
 
+import inflearn.springadvance.aop.order.aop.AspectV1;
 import inflearn.springadvance.proxy.trace.logtrace.LogTrace;
 import inflearn.springadvance.proxy.trace.logtrace.ThreadLocalLogTrace;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Import;
 
 @SpringBootApplication
 //@Import({AppV1Config.class, AppV2Config.class})
@@ -18,6 +20,7 @@ import org.springframework.context.annotation.ComponentScan;
 //@Import(BeanPostProcessorConfig.class)
 //@Import(AutoProxyConfig.class)
 //@Import(AopConfig.class)
+@Import(AspectV1.class)
 @ComponentScan(basePackages = "inflearn.springadvance.aop")
 public class SpringAdvanceApplication {
 
