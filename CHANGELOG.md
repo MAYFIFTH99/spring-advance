@@ -246,7 +246,7 @@ proxy.call() 하면 이제 프록시 기능이 적용되는 것.
 
 ### 빈 등록 과정
 
-![img.png](img.png)
+![img.png](src/main/resources/image/img.png)
 
 1. **생성** - 스프링 빈 대상이 되는 객체 생성
     - `@Bean`, `컴포넌트 스캔` 모두 포함
@@ -255,7 +255,7 @@ proxy.call() 하면 이제 프록시 기능이 적용되는 것.
 4. **등록** - 빈 반환
    - 전달 된 빈을 그대로 반환하면 해당 빈이 등록되고, 변경하면 변경된 객체가 컨테이너에 등록
 
-![img_1.png](img_1.png)
+![img_1.png](src/main/resources/image/img_1.png)
 
 ---
 
@@ -280,7 +280,7 @@ A를 빈으로 등록할 때, B로 바꿔치기
 
 ### 자동 프록시 생성기 - AutoProxyCreator
 
-![img_4.png](img_4.png)
+![img_4.png](src/main/resources/image/img_4.png)
 
 1. 생성 : 스프링이 스프링 빈 대상이 되는 객체를 생성(@Bean, 컴포넌트 스캔)
 2. 전달 : 생성된 객체를 빈 저장소에 등록하기 직전에 빈 후처리기에 전달
@@ -335,9 +335,9 @@ pointcut.setExpression("execution(* inflearn.springadvance.proxy.app..*(..)) && 
 > 프록시 자동 생성기는 프록시를 **하나**만 생성한다.
 > <br>프록시 팩토리가 생성하는 프록시는 내부에 여러 `advisor`들을 포함할 수 있기 때문
 
-![img_5.png](img_5.png)
+![img_5.png](src/main/resources/image/img_5.png)
 
-![img_6.png](img_6.png)
+![img_6.png](src/main/resources/image/img_6.png)
 
 ---
 
@@ -353,7 +353,7 @@ pointcut.setExpression("execution(* inflearn.springadvance.proxy.app..*(..)) && 
 쉽게 말해 이때까지 구현한 기능에 `@Aspect`, `Advisor`로 변환해서 저장하는 기능도 한다.
 - 그래서 이름 앞에 `AnnotationAware` 가 붙어 있는 것
 
-![img_7.png](img_7.png)
+![img_7.png](src/main/resources/image/img_7.png)
 
 즉, 자동 프록시 생성기는 두 가지 일을 한다.
 1. 어드바이저를 기반으로 프록시를 생성
@@ -365,11 +365,11 @@ pointcut.setExpression("execution(* inflearn.springadvance.proxy.app..*(..)) && 
 3. 어드바이저 생성 : 어드바이저 빌더를 통해 `@Aspect` 어노테이션 정보를 기반으로 어드바이저 생성
 4. @Aspect 기반 어드바이저 저장 : 생성한 어드바이저를 어드바이저 빌더 내부에 저장
 
-![img_8.png](img_8.png)
+![img_8.png](src/main/resources/image/img_8.png)
 
 ### 2. 어드바이저를 기반으로 프록시 생성
 
-![img_9.png](img_9.png)
+![img_9.png](src/main/resources/image/img_9.png)
 
 1. 생성: 스프링 빈 대상이 되는 객체를 생성한다. ( @Bean , 컴포넌트 스캔 모두 포함)
 2. 전달: 생성된 객체를 빈 저장소에 등록하기 직전에 빈 후처리기에 전달한다.
@@ -491,7 +491,7 @@ try {
 > `@target`은 인스턴스의 모든 메서드를 조인 포인트로 적용하고,
 > `@within`은 해당 타입 내에 있는 메서드만 조인 포인트로 적용한다.
 
-![img_10.png](img_10.png)
+![img_10.png](src/main/resources/image/img_10.png)
 
 쉽게 말해 `@target`은 부모 클래스의 메서드까지 어드바이스를 다 적용하고,
 `@within`은 자기 자신의 클래스에 정의된 메서드에만 어드바이스를 적용한다.
@@ -543,12 +543,12 @@ JDK 동적 프록시로 만들어진 프록시 객체는 인터페이스를 기�
     }
 ```
 
-![img_11.png](img_11.png)
+![img_11.png](src/main/resources/image/img_11.png)
 
 ### 내부 호출 대안 1 - Setter 주입(프록시)
 > 내부 호출을 해결하는 가장 간단한 방법은, 자기 자신을 의존관계로 주입 받는 것이다.
 
-![img_12.png](img_12.png)
+![img_12.png](src/main/resources/image/img_12.png)
 
 - 생성자 순환 문제를 해결하기 위해, 빈 생성 -> 의존성 주입 순서를 이용해 Setter로 주입하는 것으로 해결
 
@@ -557,3 +557,9 @@ JDK 동적 프록시로 만들어진 프록시 객체는 인터페이스를 기�
 - ObjectProvider를 이용한 지연 조회
   - Provider는 빈 생성 이후에 조회하므로 지연 조회 -> 프록시를 가져온다.
   - ApplicationContext를 직접 주입 받는 것은 오버헤드가 너무 크다.
+
+### 내부 호출 대안 3 - 구조 변경
+
+- 내부 호출 메서드를 클래스로 분리시켜서 AOP가 적용되도록 구조 자체를 변경하는 방법
+
+![img_13.png](src/main/resources/image/img_13.png)
