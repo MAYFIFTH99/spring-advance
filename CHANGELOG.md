@@ -494,3 +494,17 @@ try {
 
 쉽게 말해 `@target`은 부모 클래스의 메서드까지 어드바이스를 다 적용하고,
 `@within`은 자기 자신의 클래스에 정의된 메서드에만 어드바이스를 적용한다.
+
+---
+
+## 매개변수 전달
+
+다음은 포인트컷 표현식을 사용해 어드바이스에 매개변수를 전달할 수 있다.
+- this, target, args, @target, @within, @annotation, @args
+
+```java
+@Before("allMember() && args(arg, ..)")
+public void logArgs3(String arg) {
+    log.info("[logArgs3] arg={}", arg);
+}
+```
