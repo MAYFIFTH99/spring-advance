@@ -587,3 +587,20 @@ AOP는 프록시 기반이고, 프록시는 메서드 오버라이딩을 기반�
 > 그런데 프록시를 캐스팅할 일이 많지 않을 것 같은데 왜 이런 것을 확인하고 있을까?
 > <br>진짜 문제는 `의존관계 주입 시`에 발생한다.
 
+### 2. 의존관계 주입
+
+JDK 동적 프록시를 사용하면서 의존관계를 주입할 때 어떤 문제가 발생하는지 코드로 보자.
+
+```java
+    @Autowired
+    MemberService memberService;
+
+    @Autowired
+    MemberServiceImpl memberServiceImpl;
+```
+
+이렇게 실행하면, `memberServiceImpl`에 주입되길 기대하는 타입은 `MemberServiceImpl`인데,
+실제로 넘어온 타입은 `$Proxy54` 라고 타입 예외가 발생한다.
+
+이를 그림으로 표현하면 다음과 같다.
+![img.png](img.png)
