@@ -604,3 +604,11 @@ JDK 동적 프록시를 사용하면서 의존관계를 주입할 때 어떤 문
 
 이를 그림으로 표현하면 다음과 같다.
 ![img.png](img.png)
+
+이를 CGLIB 프록시로 변경해보자.
+```java
+@SpringBootTest(properties = "spring.aop.proxy-target-class=true") // CGLIB 동적 프록시
+```
+
+- 다른 코드는 모두 동일하고 프록시 팩토리 설정만 변경한다
+- 테스트를 실행하면 JDK 동적 프록시를 사용할 때(false)는 실패하던 것들이 모두 성공하는 것을 볼 수 있다.
