@@ -1,5 +1,6 @@
 package inflearn.springadvance.aop.exam;
 
+import inflearn.springadvance.aop.exam.annotation.Retry;
 import inflearn.springadvance.aop.exam.annotation.Trace;
 import org.springframework.stereotype.Repository;
 
@@ -12,6 +13,7 @@ public class ExamRepository {
      * 5번 중 1번 실패하는 요청
      */
     @Trace
+    @Retry(5)
     public String save(String itemId) {
         seq++;
         if (seq % 5 == 0) {
