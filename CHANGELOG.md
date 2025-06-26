@@ -469,3 +469,25 @@ try {
 2. within : execution의 타입 매치 부분만 사용한다고 보면 된다.
    - 주의 : execution 과 다르게, 타입이 정확히 매치되어야 한다.
    - 인터페이스 사용 X
+3. args : 인자가 주어진 타입의 인스턴스인 조인 포인트로 매칭
+4. @target : 실행 객체의 클래스에 주어진 타입의 어노테이션이 있는 조인 포인트
+5. @within : 주어진 어노테이션이 있는 타입 내 조인 포인트
+
+**`execution`과 `args`의 차이점**
+- `execution`은 파라미터 타입이 '정확'하게 매칭되어야 한다.
+  - 클래스에 선언된 정보를 바탕으로 판단
+- `args`는 부모 타입을 허용한다.
+  - 실제 넘어온 파라미터 객체 인스턴스를 보고 판단
+
+
+`@target`과 `@within` 은 다음과 같이 타입에 있는 어노테이션으로 AOP 적용 여부를 판단한다.
+- @target(hello.aop.member.annotation.ClassAop)
+- @within(hello.aop.member.annotation.ClassAop)
+
+> `@target`은 인스턴스의 모든 메서드를 조인 포인트로 적용하고,
+> `@within`은 해당 타입 내에 있는 메서드만 조인 포인트로 적용한다.
+
+![img_10.png](img_10.png)
+
+쉽게 말해 `@target`은 부모 클래스의 메서드까지 어드바이스를 다 적용하고,
+`@within`은 자기 자신의 클래스에 정의된 메서드에만 어드바이스를 적용한다.
