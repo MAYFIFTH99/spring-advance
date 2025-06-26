@@ -524,3 +524,23 @@ JDK 동적 프록시로 만들어진 프록시 객체는 인터페이스를 기�
 
 @Trace, @Retry 어노테이션으로 실무와 비슷한 예제 실습
 
+---
+
+# 스프링 AOP 실무 주의사항
+
+## 1. 프록시와 내부 호출
+```java
+@Test
+    void external() {
+        log.info("callServiceV0.getClass() ={}", callServiceV0.getClass());
+        callServiceV0.external();
+
+        /**
+         * 1. callServiceV0.external() -> 프록시 객체 -> external 호출
+         * 2. external() -> this.internal() -> 실제 타겟에서 internal 메서드 호출
+         * 따라서 AOP 적용이 안되는 문제 발생
+         */
+    }
+```
+
+![img_11.png](img_11.png)
